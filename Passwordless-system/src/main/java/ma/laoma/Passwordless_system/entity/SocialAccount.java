@@ -13,24 +13,26 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
-@Table(name = "recovery_codes")
+@Table(name = "social_accounts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RecoveryCode {
+public class SocialAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String code;
-    private LocalDateTime createdAt;
-    private Boolean used;
+    private String provider;
+    private String providerUserId;
+    private String email;
+    private String avatarUrl;
+    private LocalDateTime linkedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
+
